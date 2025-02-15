@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     flower.style.display = "inherit";
     word.style.display = "none";
-  }, 2000);
+  }, 4000);
 });
 
 function createRaindrop() {
@@ -25,7 +25,7 @@ function createRaindrop() {
 
   setTimeout(() => {
     rainDrop.style.display = "inherit";
-  }, 800);
+  }, 1000);
 }
 
 setInterval(createRaindrop, 100);
