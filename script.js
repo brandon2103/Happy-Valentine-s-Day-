@@ -74,3 +74,23 @@ var tl = gsap.timeline()
 //dots
 .fromTo(dots, 6, {autoAlpha: 0}, {autoAlpha: 1, ease: Expo.easeOut}, 'flower3+=1')
 .fromTo(dots, 5, {scale: 0, transformOrigin: '50% 50%' }, {scale: 1, ease: Expo.easeOut}, 'flower3')
+
+var strokesLeftBottom = $('#LeftBottomGroup_1_ path[id^=Stroke]').toArray().reverse();
+var strokesLeftTop = $('#LeftTopGroup_1_ path[id^=Stroke]').toArray().reverse();
+var strokesRightBottom = $('#RightBottomGroup_1_ path[id^=Stroke]').toArray().reverse();
+var strokesRightTop = $('#RightTopGroup_1_ path[id^=Stroke]').toArray().reverse();
+
+function animateStroke(element) {
+    var length = element.getTotalLength();
+    gsap.set(element, { strokeDasharray: length, strokeDashoffset: length });
+    gsap.to(element, { strokeDashoffset: 0, duration: 2 });
+}
+
+var tl = gsap.timeline()
+.set('#Footer_group_1_', {autoAlpha: 1})
+.fromTo(['#Stem16_1_','#Stem1_1_'], {strokeDasharray: "100%", strokeDashoffset: "100%"}, {duration:1.5, strokeDashoffset: "0%"}, 'start');
+
+strokesLeftBottom.forEach(stroke => animateStroke(stroke));
+strokesLeftTop.forEach(stroke => animateStroke(stroke));
+strokesRightBottom.forEach(stroke => animateStroke(stroke));
+strokesRightTop.forEach(stroke => animateStroke(stroke));
